@@ -25,10 +25,13 @@ public class Gear : MonoBehaviour
             transform.position = mousePos;
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (m_IsGrab 
+            && Input.GetMouseButtonUp(0) 
+            && !GameManager.sInstance.m_TowerIsTurning)
         {
             Debug.Log("Drop");
             m_IsGrab = false;
+            GameManager.sInstance.ParentGear(this);
         }
     }
 
